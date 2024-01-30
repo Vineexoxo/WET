@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Love Expression</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="love">
+            <h2>Sneha, Will You Be My <span>Valentine</span> ?</h2>
+            <a id="no" href="#" onclick="changePositionAndCount()">No</a>
+            <a id="yes" href="yes.html">Yes</a>
+        </div>
+    </div>
+    <script>
+        var noClickCounter = 0;
+        var yesSizeCounter = 0;
+
+        function changePositionAndCount() {
+            var noButton = document.getElementById("no");
+            var container = document.querySelector(".container");
+            var yesButton = document.getElementById("yes");
+            var currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+            
+            var randomX = Math.floor(Math.random() * (container.offsetWidth - noButton.offsetWidth));
+            var randomY = Math.floor(Math.random() * (container.offsetHeight - noButton.offsetHeight));
+            noButton.style.position = "absolute";
+            noButton.style.left = randomX + "px";
+            noButton.style.top = randomY + "px";
+            noClickCounter++;
+
+            if (noClickCounter >= 2) {
+                yesSizeCounter = yesSizeCounter+2;
+                yesButton.style.fontSize = (currentSize + yesSizeCounter) + "px";
+            }
+            if (noClickCounter === 2) {
+                var img = document.createElement("img");
+                img.src = "oo.jpg"; // Provide the path to your image
+                img.style.width = "150px"; // Adjust the width of the image
+                img.style.position = "fixed";
+                img.style.top = "0";
+                img.style.left = "50%";
+                img.style.transform = "translateX(-50%)"; // Center the image horizontally
+                container.appendChild(img);
+            }
+            if(noClickCounter==3){
+                var img2 = document.createElement("img");
+                img2.src = "o2.jpg"; // Provide the path to your second image
+                img2.style.width = "130px"; // Adjust the width of the image
+                img2.style.position = "fixed";
+                img2.style.top = "0";
+                img2.style.left = "50%";
+                img2.style.transform = "translateX(100%)"; // Center the second image horizontally
+                container.appendChild(img2);
+            }
+            if (noClickCounter === 4) {
+                var img3 = document.createElement("img");
+                img3.src = "uima.jpg"; // Provide the path to your third image
+                img3.style.width = "130px"; // Adjust the width of the image
+                img3.style.position = "fixed";
+                img3.style.top = "0";
+                img3.style.left = "50%";
+                img3.style.transform = "translateX(-250%)"; // Position the third image to the left
+                container.appendChild(img3);
+            }
+            
+        }
+    </script>
+</body>
+</html>
+
